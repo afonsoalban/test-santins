@@ -1,0 +1,233 @@
+.menu-1{
+	nav a:hover,
+	nav a:focus {
+	outline: none;
+}
+	a::before,
+	a::after {
+		display: inline-block;
+		opacity: 0;
+		-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+		-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+		transition: transform 0.3s, opacity 0.2s;
+	}
+	a::before {
+		margin-right: 10px;
+		content: '[';
+		-webkit-transform: translateX(20px);
+		-moz-transform: translateX(20px);
+		transform: translateX(20px);
+	}
+	a::after {
+		margin-left: 10px;
+		content: ']';
+		-webkit-transform: translateX(-20px);
+		-moz-transform: translateX(-20px);
+		transform: translateX(-20px);
+	}
+	a:hover::before,
+	a:hover::after,
+	a:focus::before,
+	a:focus::after {
+		opacity: 1;
+		-webkit-transform: translateX(0px);
+		-moz-transform: translateX(0px);
+		transform: translateX(0px);
+	}
+}
+
+.menu-2{
+	nav a:hover,
+	nav a:focus {
+	outline: none;
+}
+	 a::after {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: rgba(0,0,0,0.1);
+		content: '';
+		opacity: 0;
+		-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+		-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+		transition: opacity 0.3s, transform 0.3s;
+		-webkit-transform: translateY(10px);
+		-moz-transform: translateY(10px);
+		transform: translateY(10px);
+	}
+	 a:hover::after,
+	 a:focus::after {
+		opacity: 1;
+		-webkit-transform: translateY(0px);
+		-moz-transform: translateY(0px);
+		transform: translateY(0px);
+	}
+}
+/*MENU 3 EX: <a href="#"><span data-hover="Palavra Menu">Palavra Menu</span></a> */
+.menu-3{
+	nav a:hover,
+	nav a:focus {
+	outline: none;
+}
+	a {
+		overflow: hidden;
+	}
+	a span {
+		position: relative;
+		display: inline-block;
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		transition: transform 0.3s;
+	}
+	a span::before {
+		position: absolute;
+		top: 100%;
+		content: attr(data-hover);
+		font-weight: 700;
+		-webkit-transform: translate3d(0,0,0);
+		-moz-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+	 a:hover span,
+	 a:focus span {
+		-webkit-transform: translateY(-100%);
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%);
+	}
+}
+/* MENU-4 EX: <a href="#" data-hover="Palavra Menu"><span>Palavra Menu</span></a> */
+.menu-4{
+	nav a:hover,
+	nav a:focus {
+	outline: none;
+}
+	position: relative;
+	z-index: 1;
+	a {
+		overflow: hidden;
+	}
+	a span {
+		display: block;
+		padding: 10px 20px;
+		background: #0f7c67;
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		transition: transform 0.3s;
+	}
+	a::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		padding: 10px 20px;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		color: #0f7c67;
+		content: attr(data-hover);
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		transition: transform 0.3s;
+		-webkit-transform: translateX(-25%);
+	}
+	a:hover span,
+	a:focus span {
+		-webkit-transform: translateX(100%);
+		-moz-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+	a:hover::before,
+	a:focus::before {
+		-webkit-transform: translateX(0%);
+		-moz-transform: translateX(0%);
+		transform: translateX(0%);
+	}
+}
+/* MENU-5 EX: <a href="#" data-hover="Palavra Menu"><span>Palavra Menu</span></a> */
+/* o @color-hover é a cor da palavra no :hover */
+.menu-5(@color-hover:#FF0000){
+	nav a:hover,
+	nav a:focus {
+	outline: none;
+}
+	a {
+		text-shadow: 0 0 1px rgba(111,134,134,0.3);
+	}
+	a::before {
+		color: @color-hover;
+		content: attr(data-hover);
+		position: absolute;
+		opacity: 0;
+		text-shadow: 0 0 1px rgba(255,255,255,0.3);
+		-webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+		-moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+		transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+		-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+		-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+		transition: transform 0.3s, opacity 0.3s;
+		pointer-events: none;
+	}
+	a:hover::before,
+	a:focus::before {
+		-webkit-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+		-moz-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+		transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+		opacity: 1;
+	}
+}
+/* o @color é a cor do sublinhado da palavra */
+.menu-6(@color:#FF0000){ 
+	nav a:hover,
+	nav a:focus {
+	outline: none;
+}
+	a {
+		text-shadow: none;
+		-webkit-transition: color 0.3s;
+		-moz-transition: color 0.3s;
+		transition: color 0.3s;
+	}
+	a::before,
+	a::after {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: #fff;
+		content: '';
+		opacity: 0;
+		-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+		-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+		transition: opacity 0.3s, transform 0.3s;
+		-webkit-transform: translateY(-10px);
+		-moz-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+	a::before {
+		top: 0;
+		-webkit-transform: translateY(-10px);
+		-moz-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+	a::after {
+		bottom: 0;
+		-webkit-transform: translateY(10px);
+		-moz-transform: translateY(10px);
+		transform: translateY(10px);
+	}
+	a:hover,
+	a:focus {
+		color: @color;
+	}
+	a:hover::before,
+	a:focus::before,
+	a:hover::after,
+	a:focus::after {
+		opacity: 1;
+		-webkit-transform: translateY(0px);
+		-moz-transform: translateY(0px);
+		transform: translateY(0px);
+	}
+}

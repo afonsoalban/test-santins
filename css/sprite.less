@@ -1,0 +1,14 @@
+.sprite(@width, @height, @x, @y, @display:block){
+	background: url(../images/sprite.png) no-repeat (@x * -1px) (@y * -1px);
+	display: @display;
+	width: (@width * 1px);
+	height: (@height * 1px);
+}
+#sprite{
+	.email{ .sprite(47, 47, 0, 0); }
+	.twitter{ .sprite(47, 47, 46, 0); }
+	.facebook{ .sprite(47, 47, 93, 0); }
+	.marcador{ .sprite(9, 9, 145, 36); }
+	.seta-topo{ .sprite(31, 32, 145, 4); }
+	.icone-aviao{ .sprite(62, 62, 176, 0); }
+}

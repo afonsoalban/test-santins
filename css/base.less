@@ -1,0 +1,218 @@
+@import 'reset';
+@import (reference) 'mixins';
+@import (reference) 'colors';
+//@import 'animacoes';
+//@import 'galeria';
+
+/* ELEMENTOS */
+body{
+	color: @texto;
+	//min-width: @width;
+	text-rendering: optimizelegibility;
+}
+body, input, textarea, select, button{
+	font: normal 14px @corpo;
+}
+
+a{
+	color: @link;
+	text-decoration: none;
+	
+	&:hover, &:active{
+		color: @link-hover;
+	}
+}
+
+b, strong{
+	font-weight: bold;
+}
+
+i, em{ 
+	font-style: italic;
+}
+
+button{
+	border: 0;
+	cursor: pointer;
+	display: block;
+	float: right;
+}
+
+abbr{
+	border-bottom: 1px dotted contrast(@basecolor);
+	cursor: help;
+}
+
+::selection{
+	background: @selecao;
+	color: contrast(@selecao)
+}
+::moz-selection{
+	background: @selecao;
+	color: contrast(@selecao)
+}
+
+// MIXINS E CLASSES
+.container{
+	margin: 0;
+	//min-width: @width;
+	overflow: visible;
+	position: relative;
+	width: 100%;
+}
+ 
+.content{
+	.box-sizing(border-box);
+	margin: 0 auto;
+	padding: 30px;
+	position: relative;
+	width: @width;
+}
+
+.animar{
+	.anima;
+}
+
+.redondo(@valor:@raio){
+	.border-radius(@valor);
+}
+
+.sombra-box{
+	.box-shadow( -2px 2px 9px 0px rgba(0, 0, 0, 0.5) );
+}
+.sombra-texto{
+	.text-shadow( 2px 2px 3px #000 );
+}
+
+.anima(@tempo: 350){
+	@t: (@tempo * 1ms);
+	.transition(all @t cubic-bezier(0.19, 1, 0.22, 1));
+}
+
+.placeholder-color(@cor: darken(@branco, 30)){
+	::-webkit-input-placeholder {
+		color: @cor;
+	}
+	:-moz-placeholder {
+		color: @cor;
+	}
+	::-moz-placeholder {
+		color: @cor;
+	}
+	:-ms-input-placeholder {
+		color: @cor;
+	}
+}
+
+.centraliza-imagem(@width, @height, @img-width:@width, @img-height:@height){
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	width: @width * 1px;
+	height: @height * 1px;
+
+	img{
+		display: inline;
+		max-width: @img-width * 1px;
+		max-height: @img-height * 1px;
+	}
+}
+.corta-imagem(@width,@height){
+	display: block;
+	overflow: hidden;
+	width: @width * 1px;
+	height: @height * 1px;
+
+	img{
+		max-width: none !important;
+		min-width: @width * 1px;
+		min-height: @height * 1px;
+	}
+}
+
+.clearfix {
+	*zoom: 1;
+
+	&:before, &:after {
+		display: table;
+		content: "";
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.botao-cor(@cor:@basecolor){
+	background-color: @cor;
+	//color: contrast(@cor);
+
+	&:hover{
+		background: lighten(@cor, 3);
+		//color: contrast(@cor);
+	}
+}
+
+.sticky(@valor:0px){
+	position: -webkit-sticky;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: -o-sticky;
+	position: sticky;
+	top: @valor;
+}
+
+/* ROLAGEM PERSONALIZADA */
+::-webkit-scrollbar {
+	width: 15px;
+}
+::-webkit-scrollbar-track {
+	.box-sizing(content-box);
+	background: @fundoRolagem;
+	padding: 3px;
+}
+::-webkit-scrollbar-thumb {
+	background: @barraRolagem;
+	.box-shadow( inset 0 0 6px fade(@preto, .5) );
+	.redondo(15px);
+	border: 4px solid @fundoRolagem;
+}
+
+.ao-topo{
+	//.redondo(30px);
+	background: @botaoTopo url(../images/to-top-branco.png) no-repeat center;
+	display: none;
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+	width: 45px;
+	height: 45px;
+	z-index: 1000;
+
+	&:before{
+		.anima;
+		//.redondo(10px);
+		background: @botaoTopo;
+		color: @branco;
+		content: 'Voltar ao topo';
+		display: block;
+		font-size: 10px;
+		line-height: 20px;
+		overflow: hidden;
+		position: absolute;
+		top: 12px;
+		right: 45px;
+		text-transform: uppercase;
+		text-align: right;
+		white-space: nowrap;
+		width: 0;
+	}
+	&:hover{
+		&:before{
+			//top: 10px;
+			padding: 0 3px;
+			width: 90px;
+		}
+	}
+}
+
+@import "sprite.less";

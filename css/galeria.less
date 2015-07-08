@@ -1,0 +1,190 @@
+/*
+ Galeria de Fotos expandida
+ Autor: Afonso Alban
+ 
+ Última revisão: 20/3/2014
+ */
+#galeria-overlay-container{
+	background: fade(@preto, 70);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	display: none;
+
+	#galeria-click{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+#galeria-overlay-branco{
+	.box-shadow(0 0 15px 0 fade(@preto, 30));
+	.redondo(10px);
+	background: @branco;
+	margin-top: -300px;
+	margin-left: -460px;
+	//overflow: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 920px;
+	height: 600px;
+	max-height: 90%;
+
+	&:before{
+		content: 'Você pode usar as setas do teclado ← e → para navegar pelas imagens; ESC para fechar.';
+		color: @branco;
+		display: block;
+		font-size: 11px;
+		position: absolute;
+		top: -22px;
+		text-align: center;
+		width: 100%;
+	}
+}
+#galeria-container{
+	padding: 20px;
+
+	#galeria-info{
+		border-bottom: 1px solid @basecolor;
+		color: @basecolor;
+		font-size: 16px;
+		font-weight: bold;
+		margin-top: -7px;
+		margin-bottom: 15px;
+		padding: 5px;
+	}
+	.titulo{
+		font-size: 26px;
+	}
+	#foto-grande{
+		.redondo(10px);
+		.centraliza-imagem(750, 500);
+		border: 1px solid darken(@branco, 20);
+		overflow: hidden;
+	}
+	#foto-grande img{
+		max-width: 100%;
+		max-height: 100%;
+		overflow: hidden;
+	}
+	#miniaturas-container{
+		overflow: hidden;
+		position: absolute;
+		top: 70px;
+		right: 20px;
+		width: 94px;
+		max-height: 500px;
+
+		> #galeria-miniaturas li{
+			margin-bottom: 7px;
+		}
+
+		.bx-controls{
+			position: absolute;
+			top: 0;
+			bottom: auto;
+			width: 100%;
+			height: 100%;
+		}
+		.bx-controls-direction{
+			position: static;
+		}
+		.bx-prev{
+			.seta-acima;
+			position: absolute;
+			text-indent: -9000px;
+		}
+		.bx-next{
+			.seta-abaixo;
+			position: absolute;
+			text-indent: -9000px;
+		}
+		.bx-wrapper{
+			padding: 40px 0;
+			position: relative;
+		}
+		.bx-viewport{
+			z-index: 10;
+		}
+	}
+	#galeria-miniaturas{		
+		li{
+			.box-sizing(padding-box);
+			.redondo(3px);
+			.corta-imagem(90,90);
+			cursor: pointer;
+			position: relative;
+			max-width: 140px;
+			max-height: 140px;
+
+			&:before{
+				.anima;
+				.box-sizing(border-box);
+				.redondo(3px);
+				border: 1px solid darken(@branco, 30);
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			&.active:before{
+				border-color: @basecolor;
+			}
+		}
+	}
+	#fechar-galeria{
+		color: #000;
+		cursor: pointer;
+		display: block;
+		font-weight: bold;
+		font-size: 11px;
+		position: absolute;
+		top: 15px;
+		right: 20px;
+		text-transform: uppercase;
+	}
+	#galeria-legenda{
+		color: lighten(@preto, 10);
+		padding: 5px 0;
+	}
+
+	.seta-grande-esquerda{
+		background: url(../images/sprite-galeria.png) 0 0;
+		display: block;
+		width: 87px;
+		height: 124px;
+	}
+	.seta-grande-direita{
+		background: url(../images/sprite-galeria.png) -87px 0;
+		display: block;
+		width: 87px;
+		height: 124px;
+	}
+	.seta-acima{
+		background: @basecolor url(../images/sprite-galeria.png) 0 -124px;
+		display: block;
+		margin-left: -16px;
+		top: 6px;
+		left: 50%;
+		width: 32px;
+		height: 21px;
+	}
+	.seta-abaixo{
+		background: @basecolor url(../images/sprite-galeria.png) -32px -124px;
+		display: block;
+		margin-left: -16px;
+		top: auto;
+		bottom: 6px;
+		left: 50%;
+		width: 32px;
+		height: 21px;
+	}
+}
